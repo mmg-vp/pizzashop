@@ -1,0 +1,15 @@
+<h1>Pizza shop</h1>
+
+<%=link_to 'Cart...' , new_orders_path ,id: 'orderButton'%>
+
+<%@pizzas.each do |pizza|%>
+  <p><%=pizza.name%></p>
+  <p><%=pizza.description%></p>
+  <p>Price: <%=pizza.price%></p>
+  <%if pizza.is_best_offer%>
+    <p><%='The best offer'%></p>
+  <%end%>
+  <%=image_tag(pizza.image_path, size: 100)%><br/>
+  <%=tag :input, type: 'button', value: 'Add to cart', onClick: "addToCart(#{pizza.id})"%>
+  <hr/>
+<%end%>
